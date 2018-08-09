@@ -7,7 +7,7 @@ git clone https://github.com/AjitWagh/GroceryDeals
 ```
 
 cd GroceryDeals
-npm install 
+npm install    
 bower install
 ```
 
