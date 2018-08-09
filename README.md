@@ -5,7 +5,10 @@ git clone https://github.com/AjitWagh/GroceryDeals
 
 ### install dependencies
 ```
+
+cd GroceryDeals
 npm install 
+bower install
 ```
 
 
