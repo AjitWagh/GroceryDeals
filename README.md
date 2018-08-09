@@ -1,9 +1,9 @@
-###How to clone
+### How to clone
 ```
 git clone https://github.com/AjitWagh/GroceryDeals
 ```
 
-###install dependencies
+### install dependencies
 ```
 npm install 
 ```

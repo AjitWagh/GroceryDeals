@@ -1,0 +1,98 @@
+<div class="container">
+    <nav class="navbar fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" style="color: white"><b>HOME</b></a>
+        <a class="navbar-brand" style="color: white">PRODUCT LIST</a>
+    </nav>
+
+    <div class="carousel" id="slider" style="margin-top: 20px">
+        <div class="carousel-inner">
+            <div class="item"  data-toggle = "modal" data-target = "#myModal" ng-class="{active:!$index}" ng-repeat="product in products track by $index ">
+                   <img id="{{product.ids}}" src="{{product.productimage}}"  ng-click="showProductsInDetail(product , product.ids)" class="img-responsive">
+            </div>
+        </div>
+        <a class="carousel-control right" href="#slider" data-slide="next"></a>
+    </div>
+
+
+
+    <div class="card" ng-repeat="product in products" style="margin-top: 10px">
+        <div class="row card-body">
+            <div class="col col-lg-1 col-md-1">
+                <img src="{{product.productimage}}" style="height: 70px; width: 80px;  border-radius: 50%;">
+            </div>
+            <div class="col col-lg-11 col-md-11">
+                <h4><b>{{product.productname}}</b></h4>
+                <p><b>Mrp</b> : {{'\u20B9 '+ product.price}}</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class = "modal fade"  id="myModal" tabindex = "-1" role = "dialog"
+         aria-labelledby = "myModalLabel" aria-hidden = "true">
+
+        <div class = "modal-dialog">
+            <div class = "modal-content"style="margin-left: -723px">
+
+                <div class = "modal-header">
+                    <h4 class = "modal-title" id = "myModalLabel">
+                      {{oneProductDetails.productname}}
+                    </h4>
+                    <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
+                        &times;
+                    </button>
+                </div>
+
+                <div class = "modal-body">
+                    <p><b>Mrp</b> : {{'\u20B9 '+ oneProductDetails.price}}</p>
+                    <p><b>Ratings</b> : {{oneProductDetails.ratings}}</p>
+                </div>
+
+                <div class = "modal-footer" style="color: red">
+                    <button type = "button" class = "btn btn-default" data-dismiss = "modal">
+                        Close
+                    </button>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+
+    </div><!-- /.modal -->
+
+</div>
+
+
+
+
+<!--<div id="carouselExampleFade"   ng-repeat="product in products track by $index" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{product.productimage}}" alt="First slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>-->
+
+
+
+
+<!--  <div id="myModal" class="modal">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 >{{oneProductDetails.productname}}</h4>
+              <span class="close" style="color: white " >&times;</span>
+          </div>
+          <div class="modal-body">
+              <p><b>Mrp</b> : {{'\u20B9 '+ oneProductDetails.price}}</p>
+              <p><b>Ratings</b> : {{oneProductDetails.ratings}}</p>
+          </div>
+      </div>
+  </div>-->
