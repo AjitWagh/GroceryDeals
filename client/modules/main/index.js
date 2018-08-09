@@ -16,7 +16,7 @@ angular.module('module.dashboard',['ctrl.dashboard','ctrl.productsDetails'])
 
     .state('app.productsDetails', {
         cache: false,
-        url: "/productsDetails?ids?productimage?productname?price?ratings",
+        url: "/productsDetails?ids?productimage?productname?price?ratings?showProduct",
         views: {
             '@': {
                 controller: 'ProductDetailsCtrl',

@@ -51,7 +51,15 @@
             </div>
         </div>
     </div>
-
+{{$stateParams.showProduct}}
+  <div class="row" align="center" style="margin-top: 50px" ng-if="!$stateParams.showProduct">
+      <div class="col" align="center">
+          <button class = "btn btn-default"
+                  ng-click="showAllProductsData()" type = "button">
+              Show All Products
+          </button>
+      </div>
+  </div>
 
     <!-- Modal -->
     <div class = "modal fade"  id="myModal" tabindex = "-1" role = "dialog"
@@ -71,7 +79,8 @@
 
                 <div class = "modal-body">
                     <p><b>Mrp</b> : {{'\u20B9 '+ oneProductDetails.price}}</p>
-                    <p><b>Ratings</b> : {{oneProductDetails.ratings}}</p>
+                    <p><b>Ratings</b> :   <span class="fa fa-star checked" ng-repeat="i in getNumber(oneProductDetails.ratings) track by $index"></span></p>
+                    <p><b>Description</b> : {{oneProductDetails.description ? oneProductDetails.description : 'NA'}}</p>
                 </div>
 
                 <div class = "modal-footer" style="color: red">
