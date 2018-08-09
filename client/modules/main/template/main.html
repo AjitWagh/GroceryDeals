@@ -6,23 +6,54 @@
 
     <div class="carousel" id="slider" style="margin-top: 20px">
         <div class="carousel-inner">
-            <div class="item"  data-toggle = "modal" data-target = "#myModal" ng-class="{active:!$index}" ng-repeat="product in products track by $index ">
-                   <img id="{{product.ids}}" src="{{product.productimage}}"  ng-click="showProductsInDetail(product , product.ids)" class="img-responsive">
+            <div class="item"   ng-repeat="product in products track by $index "  ng-class="{active:!$index}">
+                   <img  src="{{product.productimage}}"   class="img-responsive">
             </div>
         </div>
         <a class="carousel-control right" href="#slider" data-slide="next"></a>
     </div>
 
-
+    <div class="row" style="margin-top: 10px">
+        <div class="col col-md-10 col-lg-10" align="right">
+        </div>
+        <div class="col col-md-2 col-lg-2">
+         <div class="row">
+         <div class="col">
+             <label class="switch">
+                 <input type="checkbox" ng-model="verifiedChecked" ng-checked="verifiedChecked"   ng-change="selectVerifiedEntityFilter(verifiedChecked)">
+                 <span class="slider round"></span>
+             </label>
+         </div>
+             <div class="col">
+                 <b style="font-size: small"> {{message | uppercase}}</b>
+             </div>
+         </div>
+        </div>
+    </div>
 
     <div class="card" ng-repeat="product in products" style="margin-top: 10px">
         <div class="row card-body">
-            <div class="col col-lg-1 col-md-1">
+            <div class="col col-lg-1 col-md-1" ng-if="!hideImageData">
                 <img src="{{product.productimage}}" style="height: 70px; width: 80px;  border-radius: 50%;">
             </div>
+
             <div class="col col-lg-11 col-md-11">
                 <h4><b>{{product.productname}}</b></h4>
                 <p><b>Mrp</b> : {{'\u20B9 '+ product.price}}</p>
+                <!--<span class="fa fa-star checked" ng-repeat="i in getNumber(product.ratings) track by $index"></span>-->
+
+
+                <div class="row">
+                    <div class="col">
+                        <span class="fa fa-star checked" ng-repeat="i in getNumber(product.ratings) track by $index"></span>
+                    </div>
+                    <div class="col">
+                        <button data-toggle = "modal" data-target = "#myModal"
+                                 id="{{product.ids}}"  ng-click="showProductsInDetail(product , product.ids)" type = "button" class = "btn btn-default" data-dismiss = "modal">
+                            View Details
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
