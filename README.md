@@ -45,6 +45,6 @@ pm2 start app.js --name DEALS
 pm2 delete DEALS
 ```
 
-
+ 
 
 
