@@ -1,35 +1,65 @@
 angular.module('ctrl.productsDetails', [])
 
-    .controller('ProductDetailsCtrl', function ($scope ,$state ,$stateParams) {
-        console.log('$stateParams',JSON.stringify($stateParams));
+    .controller('ProductDetailsCtrl', function ($scope, $state, $stateParams) {
+        console.log('$stateParams', JSON.stringify($stateParams));
         console.log('inside the product details controller');
         $scope.selectedTab = 'PRODUCT_TAB';
-
+        // $stateParams = {};
         $scope.showDataAccordingToTabs = {
-            showDashboardData : false,
-            showProductsData : false
+            showDashboardData: false,
+            showProductsData: false
         };
         $scope.hideImageData = false;
         $scope.verifiedChecked = '';
 
-        function init(){
-console.log(1)
-           $scope.products = [{
-               "ids" : "p1",
-               "productimage": 'images/maggi.jpg',
-               "productname": "Maggi 70g",
-               "description":"Maggi is a product that belongs to Nestle India, which is one of the leading fast food companies in the country. The various Maggi products are stocks, instant noodles, ketchups and instant soups.",
-               "price": 567,
-               "ratings": 3
-           },
-               {
-                   "ids" : "p2",
-                   "productimage": 'images/sonamasuribrownrice.jpg',
-                   "productname": "24 Mantra Organic Sonamasuri Brown Raw Rice, 5kg",
-                   "description":"This rice is finding increasing acceptance in diet menus prepared by master chefs across the world\n" +
-                       "It can be used to make Idli, dosa and other rice preparations",
-                   "price": 240,
-                   "ratings" : 5
+        $scope.sortByName = '';
+        $scope.sortByRating = '';
+
+        $scope.sortData  = [{
+            text: 'Sort By Name (A-Z)',
+            value: 'productname '
+        },  {
+            text: 'Sort By Name (Z-A)',
+            value: '-productname '
+        }, {
+            text: 'Sort By Price (Low-High)',
+            value: 'price'
+        }, {
+            text: 'Sort By Price (High-Low)',
+            value: '-price'
+        }, {
+            text: 'Sort By Ratings (Low-High)',
+            value: 'ratings'
+        }, {
+                text: 'Sort By Ratings (High-Low)',
+                value: '-ratings'
+            }];
+
+         $scope.sortingName = 'productname';
+
+        $scope.sortTheProducts = function (sortingData) {
+            $scope.sortingName = sortingData;
+            console.log('this is the sorting data i am getting', JSON.stringify($scope.sortingName));
+                initializeProducts()
+        };
+
+        function initializeProducts() {
+            $scope.products = [{
+                "ids": "p1",
+                "productimage": 'images/product_one.jpg',
+                "productname": "Maggi 70g",
+                "description": "Maggi is a product that belongs to Nestle India, which is one of the leading fast food companies in the country. The various Maggi products are stocks, instant noodles, ketchups and instant soups.",
+                "price": 567,
+                "ratings": 3
+            },
+                {
+                    "ids": "p2",
+                    "productimage": 'images/product_two.jpg',
+                    "productname": "24 Mantra Organic Sonamasuri Brown Raw Rice, 5kg",
+                    "description": "This rice is finding increasing acceptance in diet menus prepared by master chefs across the world\n" +
+                        "It can be used to make Idli, dosa and other rice preparations",
+                    "price": 240,
+                    "ratings": 5
 
                },
                {
@@ -95,26 +125,26 @@ console.log(1)
                    "ratings": 5
                }];
 
-       }
+        }
 
-        // init();
+        // initializeProducts();
 
-        if($stateParams.showProduct){
-            $scope.products =[
+        if ($stateParams.showProduct) {
+            $scope.products = [
                 {
-                    "ids" : $stateParams.ids,
+                    "ids": $stateParams.ids,
                     "productimage": $stateParams.productimage,
                     "productname": $stateParams.productname,
-                    "description":$stateParams.description,
+                    "description": $stateParams.description,
                     "price": $stateParams.price,
-                    "ratings" : $stateParams.ratings
+                    "ratings": $stateParams.ratings
                 }
             ]
         }
 
 
-        if(!$stateParams.showProduct){
-            init()
+        if (!$stateParams.showProduct) {
+            initializeProducts()
         }
 
 
@@ -158,11 +188,11 @@ console.log(1)
 
         $scope.getSelectedTabsData = function (tabsDataSelected) {
             console.log('tabsDataSelected', JSON.stringify(tabsDataSelected));
-            if(tabsDataSelected === 'HOME_TAB'){
+            if (tabsDataSelected === 'HOME_TAB') {
                 $scope.selectedTab = tabsDataSelected;
                 $state.go('app.dashboard');
 
-            }else {
+            } else {
                 $scope.selectedTab = tabsDataSelected;
                 $state.go('app.productsDetails');
 
@@ -171,11 +201,11 @@ console.log(1)
 
         $scope.getSelectedTabsData = function (tabsDataSelected) {
             console.log('tabsDataSelected', JSON.stringify(tabsDataSelected));
-            if(tabsDataSelected === 'HOME_TAB'){
+            if (tabsDataSelected === 'HOME_TAB') {
                 $scope.selectedTab = tabsDataSelected;
                 $state.go('app.dashboard');
 
-            }else {
+            } else {
                 $scope.selectedTab = tabsDataSelected;
                 $state.go('app.productsDetails');
 
@@ -183,12 +213,10 @@ console.log(1)
         };
 
 
-
         $scope.showAllProductsData = function () {
-          console.log('where we show all products');
-          init()
+            console.log('where we show all products');
+            initializeProducts()
         };
-
 
 
     });

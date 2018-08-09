@@ -11,7 +11,7 @@
     <div class="carousel" id="slider" style="margin-top: 20px">
         <div class="carousel-inner">
             <div class="item"   ng-repeat="product in products track by $index "  ng-class="{active:!$index}">
-                   <img  src="{{product.productimage}}"  ng-click="goToThatProduct(product)"  class="img-responsive">
+                   <img  src="{{product.productimage}}"  style="width:850px; height:300px"  ng-click="goToThatProduct(product)"  class="img-responsive">
             </div>
 
         </div>

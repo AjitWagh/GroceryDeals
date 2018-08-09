@@ -9,6 +9,17 @@
     </nav>
     <div class="row" style="margin-top: 10px">
         <div class="col col-md-10 col-lg-10" align="right">
+            <div class="row">
+                <div class="col">
+                    <select  ng-model="sortingName" style="width:100% !important;color: black  !important" required>
+                        <option value="" >-- Select Sorting Type --</option>
+                        <option  ng-repeat="sortType in sortData" ng-click="sortTheProducts(sortType.value)" value="{{sortType.value}}">{{sortType.text}}</option>
+                    </select>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+
         </div>
         <div class="col col-md-2 col-lg-2">
             <div class="row">
@@ -25,7 +36,7 @@
         </div>
     </div>
 
-    <div class="card" ng-repeat="product in products" style="margin-top: 10px">
+    <div class="card" ng-repeat="product in products | orderBy : sortingName" style="margin-top: 10px">
         <div class="row card-body">
             <div class="col col-lg-1 col-md-1" ng-if="!hideImageData">
                 <img src="{{product.productimage}}" style="height: 70px; width: 80px;  border-radius: 50%;">
@@ -51,9 +62,9 @@
             </div>
         </div>
     </div>
-{{$stateParams.showProduct}}
-  <div class="row" align="center" style="margin-top: 50px" ng-if="!$stateParams.showProduct">
-      <div class="col" align="center">
+
+  <div class="row" align="center" style="margin-top: 10px" ng-if="!$stateParams.showProduct">
+      <div class="col">
           <button class = "btn btn-default"
                   ng-click="showAllProductsData()" type = "button">
               Show All Products
