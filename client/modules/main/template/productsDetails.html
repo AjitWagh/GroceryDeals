@@ -1,0 +1,88 @@
+<div class="container">
+
+    <nav class="navbar fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" style="color: white" ng-click="getSelectedTabsData('HOME_TAB')">
+            <span   ng-class="(selectedTab === 'HOME_TAB') ? 'ProductstatusTheme' : 'ProductstatusUnSelect'">HOME</span></a>
+
+        <a class="navbar-brand" style="color: white" ng-click="getSelectedTabsData('PRODUCT_TAB')">
+            <span ng-class="(selectedTab === 'PRODUCT_TAB') ? 'ProductstatusTheme' : 'ProductstatusUnSelect'">PRODUCT LIST</span></a>
+    </nav>
+    <div class="row" style="margin-top: 10px">
+        <div class="col col-md-10 col-lg-10" align="right">
+        </div>
+        <div class="col col-md-2 col-lg-2">
+            <div class="row">
+                <div class="col">
+                    <label class="switch">
+                        <input type="checkbox" ng-model="verifiedChecked" ng-checked="verifiedChecked"   ng-change="selectVerifiedEntityFilter(verifiedChecked)">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="col">
+                    <b style="font-size: small"> {{message | uppercase}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" ng-repeat="product in products" style="margin-top: 10px">
+        <div class="row card-body">
+            <div class="col col-lg-1 col-md-1" ng-if="!hideImageData">
+                <img src="{{product.productimage}}" style="height: 70px; width: 80px;  border-radius: 50%;">
+            </div>
+
+            <div class="col col-lg-11 col-md-11">
+                <h4><b>{{product.productname}}</b></h4>
+                <p><b>Mrp</b> : {{'\u20B9 '+ product.price}}</p>
+                <!--<span class="fa fa-star checked" ng-repeat="i in getNumber(product.ratings) track by $index"></span>-->
+
+
+                <div class="row">
+                    <div class="col">
+                        <span class="fa fa-star checked" ng-repeat="i in getNumber(product.ratings) track by $index"></span>
+                    </div>
+                    <div class="col">
+                        <button data-toggle = "modal" data-target = "#myModal"
+                                id="{{product.ids}}"  ng-click="showProductsInDetail(product , product.ids)" type = "button" class = "btn btn-default" data-dismiss = "modal">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class = "modal fade"  id="myModal" tabindex = "-1" role = "dialog"
+         aria-labelledby = "myModalLabel" aria-hidden = "true">
+
+        <div class = "modal-dialog">
+            <div class = "modal-content"style="margin-left: -723px">
+
+                <div class = "modal-header">
+                    <h4 class = "modal-title" id = "myModalLabel">
+                        {{oneProductDetails.productname}}
+                    </h4>
+                    <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
+                        &times;
+                    </button>
+                </div>
+
+                <div class = "modal-body">
+                    <p><b>Mrp</b> : {{'\u20B9 '+ oneProductDetails.price}}</p>
+                    <p><b>Ratings</b> : {{oneProductDetails.ratings}}</p>
+                </div>
+
+                <div class = "modal-footer" style="color: red">
+                    <button type = "button" class = "btn btn-default" data-dismiss = "modal">
+                        Close
+                    </button>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+
+    </div><!-- /.modal -->
+
+</div>
