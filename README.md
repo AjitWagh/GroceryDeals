@@ -1,3 +1,18 @@
+# GroceryDeals
+The Mean Stack Learning Project
+=================================
+
+Its a deals product website.
+
+Features
+-------
+
+The following Features are Integrated
+
+* Deals Product List 
+* Sorting based on productname,mrp,ratings
+
+
 ### How to clone
 ```
 git clone https://github.com/AjitWagh/GroceryDeals
@@ -29,5 +44,7 @@ OR
 pm2 start app.js --name DEALS
 pm2 delete DEALS
 ```
+
+
 
 
