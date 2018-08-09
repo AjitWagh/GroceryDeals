@@ -13,7 +13,7 @@ app.get('/',function(req,res){
     res.sendfile(__dirname+'/client/index.html');
 });
 
-app.listen(9000);
+app.listen(3000);
 
-console.log('server started on 9000');
+console.log('server started on 3000');
 module.exports = app;
