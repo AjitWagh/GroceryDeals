@@ -1,4 +1,4 @@
-<div class="container" style="overflow-x: unset">
+<div class="container">
 
     <nav class="navbar fixed-top navbar-dark bg-dark">
         <a class="navbar-brand" style="color: white" ng-click="getSelectedTabsData('HOME_TAB')">
@@ -63,14 +63,6 @@
         </div>
     </div>
 
-  <div class="row" align="center" style="margin-top: 10px" ng-if="!$stateParams.showProduct">
-      <div class="col">
-          <button class = "btn btn-default"
-                  ng-click="showAllProductsData()" type = "button">
-              Show All Products
-          </button>
-      </div>
-  </div>
 
     <!-- Modal -->
     <div class = "modal fade"  id="myModal" tabindex = "-1" role = "dialog"
@@ -105,4 +97,12 @@
 
     </div><!-- /.modal -->
 
+    <div class="row" align="center" style="margin-top: 10px" ng-if="!$stateParams.showProduct">
+        <div class="col">
+            <button class = "btn btn-default"
+                    ng-click="showAllProductsData()" type = "button">
+                Show All Products
+            </button>
+        </div>
+    </div>
 </div>
