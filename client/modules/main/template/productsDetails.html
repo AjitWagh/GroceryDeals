@@ -9,15 +9,11 @@
     </nav>
     <div class="row" style="margin-top: 10px">
         <div class="col col-md-10 col-lg-10" align="right">
-            <div class="row">
-                <div class="col">
-                    <select  ng-model="sortingName" style="width:100% !important;color: black  !important" required>
-                        <option value="" >-- Select Sorting Type --</option>
-                        <option  ng-repeat="sortType in sortData" ng-click="sortTheProducts(sortType.value)" value="{{sortType.value}}">{{sortType.text}}</option>
-                    </select>
-                </div>
-                <div class="col">
-                </div>
+            <div class="pull-left">
+                <select  ng-model="sortingName" style="color: black  !important" required>
+                    <option value="" >-- Select Sorting Type --</option>
+                    <option  ng-repeat="sortType in sortData" ng-click="sortTheProducts(sortType.value)" value="{{sortType.value}}">{{sortType.text}}</option>
+                </select>
             </div>
 
         </div>
@@ -62,6 +58,15 @@
             </div>
         </div>
     </div>
+    <div class="row"  style="margin-top: 10px" ng-if="!$stateParams.showProduct">
+        <div style="text-align: center">
+            <button class = "btn btn-default"
+                    ng-click="showAllProductsData()" type = "button">
+                Show All Products
+            </button>
+        </div>
+
+    </div>
 
 
     <!-- Modal -->
@@ -97,12 +102,5 @@
 
     </div><!-- /.modal -->
 
-    <div class="row" align="center" style="margin-top: 10px" ng-if="!$stateParams.showProduct">
-        <div class="col">
-            <button class = "btn btn-default"
-                    ng-click="showAllProductsData()" type = "button">
-                Show All Products
-            </button>
-        </div>
-    </div>
+
 </div>
